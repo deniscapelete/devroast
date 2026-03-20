@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+/* ─── Fonts ─────────────────────────────────────────────────────────────── */
+/* Registra as variáveis injetadas pelo next/font no @theme do Tailwind      */
+/* font-sans usa a fonte padrão do sistema (default Tailwind)                 */
+/* font-mono usa JetBrains Mono para todo texto monospaced                    */
+@theme inline {
+	--font-mono: var(--font-jetbrains-mono);
+
+	/* ─── Background ──────────────────────────────────────────────────────── */
+	--color-bg-page: #0a0a0a;
+	--color-bg-surface: #0f0f0f;
+	--color-bg-elevated: #1a1a1a;
+	--color-bg-input: #111111;
+
+	/* ─── Border ──────────────────────────────────────────────────────────── */
+	--color-border-primary: #2a2a2a;
+	--color-border-secondary: #252525;
+	--color-border-focus: #10b981;
+
+	/* ─── Text ────────────────────────────────────────────────────────────── */
+	--color-text-primary: #fafafa;
+	--color-text-secondary: #6b7280;
+	--color-text-tertiary: #4b5563;
+	--color-text-muted: #525252;
+
+	/* ─── Accent ──────────────────────────────────────────────────────────── */
+	--color-accent-green: #10b981;
+	--color-accent-green-hover: #34d399;
+	--color-accent-amber: #f59e0b;
+	--color-accent-amber-hover: #fbbf24;
+	--color-accent-red: #ef4444;
+	--color-accent-red-hover: #f87171;
+	--color-accent-cyan: #06b6d4;
+	--color-accent-cyan-hover: #22d3ee;
+
+	/* ─── Semantic ────────────────────────────────────────────────────────── */
+	--color-destructive: #ff5c33;
+	--color-destructive-hover: #ff7a57;
+	--color-green-primary: #22c55e;
+	--color-blue-accent: #3b82f6;
+	--color-orange-accent: #f97316;
+	--color-amber-accent: #f59e0b;
+
+	/* ─── Syntax highlighting ─────────────────────────────────────────────── */
+	--color-syn-keyword: #c678dd;
+	--color-syn-function: #61afef;
+	--color-syn-string: #e5c07b;
+	--color-syn-number: #d19a66;
+	--color-syn-property: #98c379;
+	--color-syn-type: #e5c07b;
+	--color-syn-variable: #e06c75;
+	--color-syn-operator: #abb2bf;
+
+	/* ─── Spacing ─────────────────────────────────────────────────────────── */
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 16px;
+	--spacing-lg: 24px;
+	--spacing-xl: 40px;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+body {
+	background-color: var(--color-bg-page);
+	color: var(--color-text-primary);
+	font-family: var(--font-jetbrains-mono);
+}
