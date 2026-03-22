@@ -4,7 +4,7 @@
 /* Registra as variáveis injetadas pelo next/font no @theme do Tailwind      */
 /* font-sans usa a fonte padrão do sistema (default Tailwind)                 */
 /* font-mono usa JetBrains Mono para todo texto monospaced                    */
-@theme inline {
+@theme {
 	--font-mono: var(--font-jetbrains-mono);
 
 	/* ─── Background ──────────────────────────────────────────────────────── */
@@ -42,6 +42,10 @@
 	--color-orange-accent: #f97316;
 	--color-amber-accent: #f59e0b;
 
+	/* ─── Diff ────────────────────────────────────────────────────────────── */
+	--color-diff-removed-bg: #1a0a0a;
+	--color-diff-added-bg: #0a1a0f;
+
 	/* ─── Syntax highlighting ─────────────────────────────────────────────── */
 	--color-syn-keyword: #c678dd;
 	--color-syn-function: #61afef;
@@ -64,5 +68,4 @@
 body {
 	background-color: var(--color-bg-page);
 	color: var(--color-text-primary);
-	font-family: var(--font-jetbrains-mono);
 }

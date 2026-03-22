@@ -1,66 +1,56 @@
 # DevRoast
 
-A Next.js application for code reviews with style and personality.
+> Paste your code. Get roasted.
 
-## Technology Stack
+DevRoast is an app that reviews your code with brutal honesty. Paste a snippet, hit submit, and receive a score from 0 to 10 alongside a no-holds-barred critique — pointing out bad practices, questionable decisions, and everything your teammates were too polite to mention.
 
-- **Framework**: Next.js 16 with React 19
-- **Styling**: Tailwind CSS v4 with CSS-based configuration
-- **Component Library**: Custom UI components using `tailwind-variants`
-- **Typography**: JetBrains Mono for all monospaced text, system defaults for regular text
-- **Code Quality**: Biome for linting and formatting
+---
 
-## Architecture
+## Features
 
-### Design Tokens
+- **Code Roasting** — paste any code snippet and get an AI-generated review that scores your code from 0 (catastrophic) to 10 (actually decent)
+- **Roast Mode** — toggle maximum sarcasm for an extra spicy review
+- **Shame Leaderboard** — the worst code submissions ranked for all to see, because bad code deserves recognition
+- **Syntax Highlighting** — your code is displayed with full syntax highlighting before and after the roast
+- **Multi-language support** — JavaScript, TypeScript, Python, SQL, and more
 
-All design tokens are defined in `src/app/globals.css` using Tailwind CSS v4's `@theme` directive. This includes:
+---
 
-- **Colors**: Background, text, border, and accent colors
-- **Typography**: Font families using system defaults and JetBrains Mono
-- **Spacing**: Consistent spacing scale (xs, sm, md, lg, xl)
+## How it works
 
-### Components
+1. Paste your code into the editor on the homepage
+2. Toggle "roast mode" if you want maximum sarcasm
+3. Hit **$ roast_my_code**
+4. Receive your score and a detailed, painfully honest review
+5. Optional: end up on the leaderboard if your code is bad enough
 
-Components are located in `src/components/ui/` and follow these patterns:
+---
 
-- Built with React and TypeScript
-- Use `tailwind-variants` for variant management
-- Styled with Tailwind CSS design tokens
-- Named exports only (never default exports)
+## Built during NLW by Rocketseat
 
-#### Typography Standards
+This project is being built live during **NLW (Next Level Week)**, a free online event by [Rocketseat](https://rocketseat.com.br) where thousands of developers build a full application together from scratch over the course of a week.
 
-- **Regular Text**: Uses system default sans-serif font via `font-sans`
-- **Monospaced Text**: Uses JetBrains Mono via `font-mono` class
-- No external monospace fonts beyond JetBrains Mono
-- All text styling uses Tailwind utility classes, not CSS variables directly
+Each lesson adds a new layer to the app — from the UI components and homepage to the AI integration and leaderboard. If you're following along, welcome aboard.
 
-### UI Component Guidelines
+---
 
-See [src/components/ui/AGENTS.md](src/components/ui/AGENTS.md) for detailed component patterns and rules.
-
-## Getting Started
-
-First, run the development server:
+## Running locally
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-## Available Scripts
+---
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run Biome linter
-- `npm run format` - Format code with Biome
-- `npm run check` - Run Biome checks with fixes
+## Tech stack
 
-## Learn More
+Next.js · React · Tailwind CSS · TypeScript · Shiki · Biome
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com)
-- [React Documentation](https://react.dev)
+---
+
+<p align="center">
+  Made with ☕ and poor code examples
+</p>
