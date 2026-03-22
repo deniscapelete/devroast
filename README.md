@@ -1,56 +1,56 @@
 # DevRoast
 
-> Paste your code. Get roasted.
+> Cole seu código. Leve um esporro.
 
-DevRoast is an app that reviews your code with brutal honesty. Paste a snippet, hit submit, and receive a score from 0 to 10 alongside a no-holds-barred critique — pointing out bad practices, questionable decisions, and everything your teammates were too polite to mention.
-
----
-
-## Features
-
-- **Code Roasting** — paste any code snippet and get an AI-generated review that scores your code from 0 (catastrophic) to 10 (actually decent)
-- **Roast Mode** — toggle maximum sarcasm for an extra spicy review
-- **Shame Leaderboard** — the worst code submissions ranked for all to see, because bad code deserves recognition
-- **Syntax Highlighting** — your code is displayed with full syntax highlighting before and after the roast
-- **Multi-language support** — JavaScript, TypeScript, Python, SQL, and more
+DevRoast é um app que avalia o seu código sem papas na língua. Cole um trecho, clique em enviar e receba uma nota de 0 a 10 acompanhada de uma crítica sem filtro — apontando más práticas, decisões questionáveis e tudo aquilo que seus colegas de trabalho foram educados demais para falar.
 
 ---
 
-## How it works
+## Funcionalidades
 
-1. Paste your code into the editor on the homepage
-2. Toggle "roast mode" if you want maximum sarcasm
-3. Hit **$ roast_my_code**
-4. Receive your score and a detailed, painfully honest review
-5. Optional: end up on the leaderboard if your code is bad enough
-
----
-
-## Built during NLW by Rocketseat
-
-This project is being built live during **NLW (Next Level Week)**, a free online event by [Rocketseat](https://rocketseat.com.br) where thousands of developers build a full application together from scratch over the course of a week.
-
-Each lesson adds a new layer to the app — from the UI components and homepage to the AI integration and leaderboard. If you're following along, welcome aboard.
+- **Roast de código** — cole qualquer trecho e receba uma avaliação gerada por IA que dá uma nota de 0 (catastrófico) a 10 (aceitável)
+- **Modo Roast** — ative o sarcasmo máximo para uma crítica ainda mais picante
+- **Leaderboard da Vergonha** — os piores códigos enviados rankeados para todo mundo ver, porque código ruim merece reconhecimento
+- **Syntax highlighting** — seu código exibido com destaque de sintaxe antes e depois do roast
+- **Suporte a múltiplas linguagens** — JavaScript, TypeScript, Python, SQL e mais
 
 ---
 
-## Running locally
+## Como funciona
+
+1. Cole o seu código no editor da página inicial
+2. Ative o "roast mode" se quiser sarcasmo no máximo
+3. Clique em **$ roast_my_code**
+4. Receba sua nota e uma avaliação dolorosamente honesta
+5. Opcional: apareça no leaderboard se o seu código for ruim o suficiente
+
+---
+
+## Desenvolvido durante o NLW da Rocketseat
+
+Este projeto está sendo construído ao vivo durante o **NLW (Next Level Week)**, evento online e gratuito da [Rocketseat](https://rocketseat.com.br) onde milhares de desenvolvedores constroem uma aplicação completa do zero ao longo de uma semana.
+
+Cada aula adiciona uma nova camada ao app — dos componentes de UI e da homepage até a integração com IA e o leaderboard. Se você está acompanhando, bem-vindo a bordo.
+
+---
+
+## Rodando localmente
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
+Acesse [http://localhost:3000](http://localhost:3000) para ver o app.
 
 ---
 
-## Tech stack
+## Tecnologias
 
 Next.js · React · Tailwind CSS · TypeScript · Shiki · Biome
 
 ---
 
 <p align="center">
-  Made with ☕ and poor code examples
+  Feito com ☕ e exemplos de código duvidosos
 </p>
