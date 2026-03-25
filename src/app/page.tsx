@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { cn } from "@/lib/cn";
+import { RoastForm } from "@/components/roast-form";
 import { button } from "@/components/ui/button";
 import { TableRow } from "@/components/ui/table-row";
-import { RoastForm } from "@/components/roast-form";
+import { cn } from "@/lib/cn";
 
 const LEADERBOARD_ROWS = [
 	{
@@ -21,8 +21,7 @@ const LEADERBOARD_ROWS = [
 	{
 		rank: 3,
 		score: 2.1,
-		codePreview:
-			"SELECT * FROM users WHERE 1=1 -- TODO: add authentication",
+		codePreview: "SELECT * FROM users WHERE 1=1 -- TODO: add authentication",
 		lang: "sql",
 	},
 ] as const;
@@ -43,7 +42,9 @@ export default function HomePage() {
 						</h1>
 					</div>
 					<p className="font-mono text-sm text-text-secondary">
-						{"// drop your code below and we'll rate it — brutally honest or full roast mode"}
+						{
+							"// drop your code below and we'll rate it — brutally honest or full roast mode"
+						}
 					</p>
 				</div>
 
