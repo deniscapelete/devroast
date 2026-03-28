@@ -15,6 +15,7 @@ import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Toggle } from "@/components/ui/toggle";
+import { cn } from "@/lib/cn";
 import { editorTheme } from "@/lib/editor-theme";
 import { detectLang } from "@/lib/lang-detect";
 
@@ -48,6 +49,8 @@ function getLangExtension(lang: string) {
 	}
 }
 
+const MAX_CHARS = 5000;
+
 export function RoastForm() {
 	const [code, setCode] = useState("");
 	const [lang, setLang] = useState("auto");
@@ -56,6 +59,9 @@ export function RoastForm() {
 		setCode(value);
 		if (value.trim().length === 0) setLang("auto");
 	}
+
+	const charCount = code.length;
+	const isOverLimit = charCount > MAX_CHARS;
 
 	// Use EditorView.domEventHandlers so the paste event is captured inside
 	// CodeMirror's own event system — the outer div never receives it.
@@ -159,8 +165,20 @@ export function RoastForm() {
 							autocompletion: false,
 							closeBrackets: false,
 						}}
-						className="min-h-[280px] text-[13px] [&_.cm-editor.cm-focused]:outline-none [&_.cm-content]:py-4 [&_.cm-content]:leading-relaxed [&_.cm-line]:px-4 [&_.cm-gutters]:border-r [&_.cm-gutters]:border-r-border-primary [&_.cm-lineNumbers]:pr-3"
+						className="min-h-[280px] text-[13px] [&_.cm-editor]:max-h-[480px] [&_.cm-editor.cm-focused]:outline-none [&_.cm-scroller]:overflow-auto [&_.cm-content]:py-4 [&_.cm-content]:leading-relaxed [&_.cm-line]:px-4 [&_.cm-gutters]:border-r [&_.cm-gutters]:border-r-border-primary [&_.cm-lineNumbers]:pr-3"
 					/>
+
+					{/* Char counter */}
+					<div className="flex justify-end border-t border-border-primary bg-bg-input px-4 py-1.5">
+						<span
+							className={cn(
+								"font-mono text-[11px]",
+								isOverLimit ? "text-accent-red" : "text-text-tertiary",
+							)}
+						>
+							{charCount}/{MAX_CHARS}
+						</span>
+					</div>
 				</div>
 			</div>
 
@@ -172,7 +190,7 @@ export function RoastForm() {
 						{"// maximum sarcasm enabled"}
 					</span>
 				</div>
-				<Button variant="primary" disabled={code.trim().length === 0}>
+				<Button variant="primary" disabled={code.trim().length === 0 || isOverLimit}>
 					{"$ roast_my_code"}
 				</Button>
 			</div>
