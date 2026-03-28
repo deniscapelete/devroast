@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { TRPCReactProvider } from "@/trpc/client";
 
 const jetbrainsMono = JetBrains_Mono({
 	subsets: ["latin"],
@@ -22,8 +23,10 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={`${jetbrainsMono.variable}`}>
 			<body>
-				<Navbar />
-				{children}
+				<TRPCReactProvider>
+					<Navbar />
+					{children}
+				</TRPCReactProvider>
 			</body>
 		</html>
 	);

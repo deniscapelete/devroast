@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RoastForm } from "@/components/roast-form";
+import { StatsNumbers } from "@/components/stats-numbers";
 import { button } from "@/components/ui/button";
 import { TableRow } from "@/components/ui/table-row";
 import { cn } from "@/lib/cn";
@@ -52,15 +53,7 @@ export default function HomePage() {
 				<RoastForm />
 
 				{/* Stats */}
-				<div className="flex items-center gap-6">
-					<span className="font-mono text-[12px] text-text-tertiary">
-						2,847 codes roasted
-					</span>
-					<span className="font-mono text-[12px] text-text-tertiary">·</span>
-					<span className="font-mono text-[12px] text-text-tertiary">
-						avg score: 4.2/10
-					</span>
-				</div>
+				<StatsNumbers />
 			</section>
 
 			{/* ── Divider ───────────────────────────────────────────────────────── */}
