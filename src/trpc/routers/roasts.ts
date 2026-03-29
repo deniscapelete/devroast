@@ -45,4 +45,25 @@ export const roastsRouter = createTRPCRouter({
 			total: Number(total),
 		};
 	}),
+
+	getLeaderboard: baseProcedure.query(async ({ ctx }) => {
+		const rows = await ctx.db
+			.select({
+				code: roasts.code,
+				language: roasts.language,
+				score: roasts.score,
+				lineCount: roasts.lineCount,
+			})
+			.from(roasts)
+			.orderBy(asc(roasts.score))
+			.limit(20);
+
+		return rows.map((row, i) => ({
+			rank: i + 1,
+			score: parseFloat(row.score),
+			lang: row.language,
+			lineCount: row.lineCount,
+			code: row.code,
+		}));
+	}),
 });
