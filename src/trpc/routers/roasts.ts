@@ -24,6 +24,7 @@ export const roastsRouter = createTRPCRouter({
 					code: roasts.code,
 					language: roasts.language,
 					score: roasts.score,
+					lineCount: roasts.lineCount,
 				})
 				.from(roasts)
 				.where(eq(roasts.onLeaderboard, true))
@@ -38,7 +39,7 @@ export const roastsRouter = createTRPCRouter({
 				score: parseFloat(row.score),
 				codePreview: row.code.split("\n")[0],
 				code: row.code,
-				lineCount: row.code.split("\n").length,
+				lineCount: row.lineCount,
 				lang: row.language,
 			})),
 			total: Number(total),
