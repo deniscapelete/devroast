@@ -27,11 +27,13 @@ function SkeletonCard() {
 	);
 }
 
+const SKELETON_IDS = Array.from({ length: 20 }, (_, i) => `skeleton-${i}`);
+
 export function LeaderboardListSkeleton() {
 	return (
 		<div className="flex flex-col gap-3">
-			{Array.from({ length: 20 }, (_, _i) => (
-				<SkeletonCard key={crypto.randomUUID()} />
+			{SKELETON_IDS.map((id) => (
+				<SkeletonCard key={id} />
 			))}
 		</div>
 	);
