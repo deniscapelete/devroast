@@ -190,7 +190,10 @@ export function RoastForm() {
 						{"// maximum sarcasm enabled"}
 					</span>
 				</div>
-				<Button variant="primary" disabled={code.trim().length === 0 || isOverLimit}>
+				<Button
+					variant="primary"
+					disabled={code.trim().length === 0 || isOverLimit}
+				>
 					{"$ roast_my_code"}
 				</Button>
 			</div>

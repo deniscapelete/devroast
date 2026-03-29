@@ -43,7 +43,11 @@ const codeSamples: Record<string, string[]> = {
 		`global x\nglobal y\nglobal z\nx = y = z = []`,
 	],
 	sql: [
-		`SELECT * FROM users WHERE username = '` + `' + username + '` + `' AND password = '` + `' + password + '` + `'`,
+		`SELECT * FROM users WHERE username = '` +
+			`' + username + '` +
+			`' AND password = '` +
+			`' + password + '` +
+			`'`,
 		`SELECT * FROM users, orders, products, categories, logs, sessions WHERE 1=1`,
 		`DROP TABLE IF EXISTS users;\nDROP TABLE IF EXISTS orders;\nDROP TABLE IF EXISTS backups;\n-- TODO: add authentication`,
 		`SELECT * FROM users;\n-- will optimize later`,
@@ -221,7 +225,14 @@ const goodIssues = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function getVerdict(score: number): "catastrophic" | "needs_serious_help" | "questionable" | "mediocre" | "acceptable" {
+function getVerdict(
+	score: number,
+):
+	| "catastrophic"
+	| "needs_serious_help"
+	| "questionable"
+	| "mediocre"
+	| "acceptable" {
 	if (score < 2.0) return "catastrophic";
 	if (score < 4.0) return "needs_serious_help";
 	if (score < 6.0) return "questionable";
@@ -237,11 +248,15 @@ function generateScore(): number {
 	// Weighted distribution: most scores are low (it's a roast app)
 	const rand = Math.random();
 	let raw: number;
-	if (rand < 0.35) raw = faker.number.float({ min: 0.5, max: 2.0 });       // 35% catastrophic
-	else if (rand < 0.65) raw = faker.number.float({ min: 2.0, max: 4.0 });  // 30% needs_serious_help
-	else if (rand < 0.82) raw = faker.number.float({ min: 4.0, max: 6.0 });  // 17% questionable
-	else if (rand < 0.94) raw = faker.number.float({ min: 6.0, max: 8.0 });  // 12% mediocre
-	else raw = faker.number.float({ min: 8.0, max: 9.8 });                   //  6% acceptable
+	if (rand < 0.35)
+		raw = faker.number.float({ min: 0.5, max: 2.0 }); // 35% catastrophic
+	else if (rand < 0.65)
+		raw = faker.number.float({ min: 2.0, max: 4.0 }); // 30% needs_serious_help
+	else if (rand < 0.82)
+		raw = faker.number.float({ min: 4.0, max: 6.0 }); // 17% questionable
+	else if (rand < 0.94)
+		raw = faker.number.float({ min: 6.0, max: 8.0 }); // 12% mediocre
+	else raw = faker.number.float({ min: 8.0, max: 9.8 }); //  6% acceptable
 	return Math.round(raw * 10) / 10;
 }
 
@@ -250,8 +265,10 @@ function generateIssues(count: number) {
 	// Always at least 1 critical, 1 warning, optionally 1 good
 	issues.push({ ...pickRandom(criticalIssues), severity: "critical" as const });
 	issues.push({ ...pickRandom(warningIssues), severity: "warning" as const });
-	if (count >= 3) issues.push({ ...pickRandom(warningIssues), severity: "warning" as const });
-	if (count >= 4) issues.push({ ...pickRandom(goodIssues), severity: "good" as const });
+	if (count >= 3)
+		issues.push({ ...pickRandom(warningIssues), severity: "warning" as const });
+	if (count >= 4)
+		issues.push({ ...pickRandom(goodIssues), severity: "good" as const });
 	return issues;
 }
 
@@ -274,15 +291,26 @@ async function seed() {
 
 		return {
 			code,
-			language: language as "javascript" | "typescript" | "python" | "sql" | "go" | "rust" | "java" | "php" | "ruby" | "other",
+			language: language as
+				| "javascript"
+				| "typescript"
+				| "python"
+				| "sql"
+				| "go"
+				| "rust"
+				| "java"
+				| "php"
+				| "ruby"
+				| "other",
 			lineCount: code.split("\n").length,
 			roastMode: Math.random() > 0.5,
 			score: String(score),
 			verdict: getVerdict(score),
 			roastText: pickRandom(roastTexts),
-			suggestedFix: Math.random() > 0.4
-				? `// suggested fix\n${faker.lorem.lines(faker.number.int({ min: 2, max: 5 }))}`
-				: null,
+			suggestedFix:
+				Math.random() > 0.4
+					? `// suggested fix\n${faker.lorem.lines(faker.number.int({ min: 2, max: 5 }))}`
+					: null,
 			onLeaderboard: score < 4.0,
 			createdAt: faker.date.recent({ days: 90 }),
 		};

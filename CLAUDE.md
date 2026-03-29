@@ -11,19 +11,26 @@ A code-roasting web app where users paste code and get a brutal AI-generated rev
 - **Base UI** (`@base-ui-components/react`) for interactive primitives (Toggle, etc.)
 - **Shiki** for server-side syntax highlighting (`CodeBlock.Body` is `async`)
 - **JetBrains Mono** — only external font, loaded via `next/font`, mapped to `font-mono`
+- **tRPC v11** + **TanStack Query v5** — type-safe API layer with SSR hydration support
 
 ## Key file structure
 ```
 src/
 ├── app/
 │   ├── globals.css        — @theme {} with all design tokens
-│   ├── layout.tsx         — Navbar + body wrapper
-│   ├── page.tsx           — Homepage (static for now)
+│   ├── layout.tsx         — Navbar + TRPCReactProvider wrapper
+│   ├── page.tsx           — Homepage
+│   ├── api/trpc/[trpc]/   — tRPC HTTP handler (GET + POST)
 │   └── ui-preview/        — Component library visual reference
 ├── components/
 │   ├── navbar.tsx         — Common header (server component)
 │   ├── roast-form.tsx     — Code editor + toggle + submit ("use client")
 │   └── ui/                — Reusable UI components (see CLAUDE.md inside)
+├── trpc/                  — tRPC + TanStack Query setup (see CLAUDE.md inside)
+│   ├── init.ts            — Context, baseProcedure, createTRPCRouter
+│   ├── client.tsx         — TRPCReactProvider + useTRPC()
+│   ├── server.tsx         — Server proxy + HydrateClient
+│   └── routers/           — Domain routers (_app.ts merges all)
 └── lib/
     └── cn.ts              — twMerge utility
 ```
@@ -52,3 +59,6 @@ src/
 
 ## Detailed component guidelines
 → `src/components/ui/CLAUDE.md`
+
+## tRPC + TanStack Query patterns
+→ `src/trpc/CLAUDE.md`

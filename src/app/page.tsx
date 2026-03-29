@@ -1,31 +1,13 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { RoastForm } from "@/components/roast-form";
+import {
+	ShameLeaderboard,
+	ShameLeaderboardSkeleton,
+} from "@/components/shame-leaderboard";
 import { StatsNumbers } from "@/components/stats-numbers";
 import { button } from "@/components/ui/button";
-import { TableRow } from "@/components/ui/table-row";
 import { cn } from "@/lib/cn";
-
-const LEADERBOARD_ROWS = [
-	{
-		rank: 1,
-		score: 1.2,
-		codePreview: 'eval(prompt("enter code")) · document.write(response)',
-		lang: "javascript",
-	},
-	{
-		rank: 2,
-		score: 1.8,
-		codePreview:
-			"if (x == true) { return true; } else if (x == false) { return false; }",
-		lang: "typescript",
-	},
-	{
-		rank: 3,
-		score: 2.1,
-		codePreview: "SELECT * FROM users WHERE 1=1 -- TODO: add authentication",
-		lang: "sql",
-	},
-] as const;
 
 export default function HomePage() {
 	return (
@@ -85,46 +67,10 @@ export default function HomePage() {
 						{"// the worst code on the internet, ranked by shame"}
 					</p>
 
-					{/* Table */}
-					<div className="border border-border-primary">
-						{/* Header row */}
-						<div className="flex items-center gap-6 bg-bg-surface border-b border-border-primary px-5 h-10">
-							<span className="w-10 shrink-0 font-mono text-[12px] font-bold text-text-tertiary">
-								#
-							</span>
-							<span className="w-[60px] shrink-0 font-mono text-[12px] font-bold text-text-tertiary">
-								score
-							</span>
-							<span className="flex-1 font-mono text-[12px] font-bold text-text-tertiary">
-								code
-							</span>
-							<span className="w-[100px] shrink-0 font-mono text-[12px] font-bold text-text-tertiary">
-								lang
-							</span>
-						</div>
-
-						{/* Data rows */}
-						{LEADERBOARD_ROWS.map((row) => (
-							<TableRow
-								key={row.rank}
-								rank={row.rank}
-								score={row.score}
-								codePreview={row.codePreview}
-								lang={row.lang}
-							/>
-						))}
-					</div>
-
-					{/* Footer hint */}
-					<p className="font-mono text-[12px] text-text-tertiary text-center">
-						showing top 3 of 2,847 ·{" "}
-						<Link
-							href="/leaderboard"
-							className="hover:text-text-secondary transition-colors duration-150"
-						>
-							view full leaderboard {">>"}
-						</Link>
-					</p>
+					{/* Table + footer */}
+					<Suspense fallback={<ShameLeaderboardSkeleton />}>
+						<ShameLeaderboard />
+					</Suspense>
 				</div>
 			</section>
 
